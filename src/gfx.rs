@@ -307,7 +307,7 @@ impl TextDrawer {
             let n = (stride * h) as usize;
             std::slice::from_raw_parts_mut(self.dib.bits, n).fill(0);
             let old = SelectObject(self.dib.dc, font);
-            SetBkMode(self.dib.dc, TRANSPARENT);
+            SetBkMode(self.dib.dc, 1); // 1 = TRANSPARENT
             SetTextColor(self.dib.dc, 0x00FF_FFFF);
             let mut rc = RECT { left: 0, top: 0, right: w, bottom: h };
             let mut flags = DT_NOPREFIX | DT_SINGLELINE | DT_END_ELLIPSIS | DT_TOP;
